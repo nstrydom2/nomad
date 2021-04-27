@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WebScraper {
-    public static List<JobListing> scrapeData(String rawPageSrc, String keyword) {
+    public static List<JobListing> scrapeData(String rawPageSrc, String keyword, String cssSelector) {
         Document document = Jsoup.parse(rawPageSrc);
-        // TODO Analyze target page for the appropriate css selector
-        String cssQuery = "";
-        List<Element> elements = document.select(cssQuery)
+        List<Element> elements = document.select(cssSelector)
                 .stream()
                 .filter(Element::hasText)
                 .filter(e -> e.text().equalsIgnoreCase(keyword))
