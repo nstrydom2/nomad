@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO remove suppress warnings annotation
+@SuppressWarnings(value = "all")
 public class WebScraper {
     public static List<JobListing> scrapeData(String rawPageSrc, String keyword, String cssSelector) {
         Document document = Jsoup.parse(rawPageSrc);
@@ -21,7 +23,7 @@ public class WebScraper {
         if (!elements.isEmpty()) {
             List<JobListing> listings = new ArrayList<>();
             elements.forEach(element -> {
-                // TODO Replace set method paramets to the appropriate
+                // TODO Replace set method parameters to the appropriate
                 //  attributes provided by the web element
                 JobListing listing = new JobListing();
                 listing.setJobTitle("");
