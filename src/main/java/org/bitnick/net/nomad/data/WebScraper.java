@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WebScraper {
-    public static List<Object> scrapeData(String rawPageSrc) {
+    public static List<JobListing> scrapeData(String rawPageSrc) {
         Document document = Jsoup.parse(rawPageSrc);
-        List<Element> elements = document.select("")
+        // TODO Analyze target page for the appropriate css selector
+        String cssQuery = "";
+        List<Element> elements = document.select(cssQuery)
                 .stream()
                 .filter(Element::hasText)
                 .filter(e -> e.text().equalsIgnoreCase(""))
@@ -30,6 +32,8 @@ public class WebScraper {
 
                 listings.add(listing);
             });
+
+            return listings;
         }
 
         return null;
